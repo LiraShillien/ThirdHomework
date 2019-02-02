@@ -22,6 +22,9 @@ function beautifulOutput($count)
   }	
 }
 
-
-giveMoney($argv[1], $count);
-beautifulOutput($count);   
+if($argv[1] > 100000){
+    echo "Maximum value, that you could provide - 100 000 UAH", PHP_EOL;
+  }else{
+     giveMoney($argv[1], $count);
+     beautifulOutput($count);   
+  }
