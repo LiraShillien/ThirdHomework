@@ -1,48 +1,41 @@
 <?php
-function mergeSort(&$a, $p, $r)
+function mergeSort(&$mas, $s, $f)
 {
-    if ($p < $r) {
-        $q = (int)(($p + $r) / 2);
-
-        mergeSort($a, $p, $q);
-        mergeSort($a, $q + 1, $r);
-
-        merge($a, $p, $q, $r);
+    if ($s < $f){
+        $q = (int)(($s + $f) / 2);
+        mergeSort($mas, $s, $q);
+        mergeSort($mas, $q + 1, $f);
+        merge($mas, $s, $q, $f);
     }
 }
 
-function merge(&$a, $p, $q, $r)
+function merge(&$mas, $s, $q, $f)
 {
-    $left = [];
-    $right = [];
-    for ($i = $p; $i <= $q; $i++) {
-        $left[] = $a[$i];
+    for ($i = $s; $i <= $q; $i++){
+        $subMasLeft[] = $mas[$i];
     }
 
-    for ($i = $q + 1; $i <= $r; $i++) {
-        $right[] = $a[$i];
+    for ($i = $q + 1; $i <= $f; $i++){
+        $subMasRight[] = $mas[$i];
     }
 
-    $left[] = INF;
-    $right[] = INF;
+    $subMasLeft[] = -INF;
+    $subMasRight[] = -INF;
 
-    $y = 0;
-    $z = 0;
+    $l = 0;
+    $r = 0;
 
-    for ($i = $p; $i <= $r; $i++) {
-        if ($left[$y] > $right[$z]) {
-            $a[$i] = $left[$y];
-            $y++;
-        } else {
-            $a[$i] = $right[$z];
-            $z++;
-        }
-        if ($a == rsort($a)){
-            break;
+    for ($i = $s; $i <= $f; $i++) {
+        if ($subMasLeft[$l] >= $subMasRight[$r]) {
+            $mas[$i] = $subMasLeft[$l];
+            $l++;
+        }else{
+            $mas[$i] = $subMasRight[$r];
+            $r++;
         }
     }
 }
 
-$a = [7,3,5,1,90,66,77,4,6];
+$a = [1,6,2,8,3,9,11,10,22,14,7];
 mergeSort($a, 0, count($a) - 1);
 echo json_encode($a), PHP_EOL;
