@@ -11,7 +11,7 @@ class Student
     public function showMyself()
     {
         echo $this->firstname . PHP_EOL, $this->lastname . PHP_EOL,
-            $this->isValidGender() . PHP_EOL, $this->status . PHP_EOL,
+            $this->gender . PHP_EOL, $this->status . PHP_EOL,
             $this->isValidGpa() . PHP_EOL;
 
     }
@@ -19,14 +19,9 @@ class Student
     public function studyTime($studyTime)
     {
         $this->gpa += log($studyTime);
+        return $this->gpa;
     }
 
-    private function isValidGender()
-    {
-        return ($this->gender == 'male' || $this->gender == 'female')
-            ? $this->gender
-            : 'Error: Gender can be equal to \'male\' or \'female\'';
-    }
 
     private function isValidGpa()
     {
@@ -106,4 +101,20 @@ function objectsShowing($array)
     }
 }
 
+
+function newGpa($array)
+{
+    $time = [60, 100, 40, 300, 1000];
+    $i = 0;
+    foreach ($array as $value){
+        $value->gpa = $value->StudyTime($time[$i]);
+        //echo $value->gpa;
+        $i++;
+    }
+    return $array;
+}
+
 objectsShowing(objectsCreation($students));
+
+//Showing with new gpa:
+//objectsShowing(newGpa(objectsCreation($students)));
