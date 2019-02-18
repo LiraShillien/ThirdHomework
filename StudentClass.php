@@ -1,5 +1,7 @@
 <?php
 
+//exercise 1,2,3.
+
 class Student
 {
     public $firstname;
