@@ -60,3 +60,7 @@ foreach($cars as $car){
         echo ' this is not car';
     }
 }
+
+//Will return:
+//Audi is passenger car
+//Kamaz is truck car
