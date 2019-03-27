@@ -2,10 +2,10 @@
 
 class Car
 {
-    private $mark;
-    private $year;
-    private $model;
-    private $vinCode;
+    protected $mark;
+    protected $year;
+    protected $model;
+    protected $vinCode;
 
     public function setMark($mark)
     {
@@ -60,3 +60,7 @@ foreach($cars as $car){
         echo ' this is not car';
     }
 }
+
+//Will return:
+//Audi is passenger car
+//Kamaz is truck car
